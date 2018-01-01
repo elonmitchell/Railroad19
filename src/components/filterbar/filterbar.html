@@ -1,0 +1,122 @@
+<div class="panel filterbar-container">
+  <div class="panel-heading filter-header">
+    <h3 class="panel-title">FILTER BY</h3>
+    <small class="panel-description">Search for your project using the fields below</small>
+  </div>
+  <div class="panel-body" id="filter_body">
+    <form>
+      <div class="clearfix">
+
+        <div class="form-group">
+          <input type="text" name="title" ng-model="filterVM.title" class="form-control" placeholder="Title">
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="projectOwner" ng-model="filterVM.projectOwner" class="form-control" placeholder="Project Owner">
+        </div>
+
+        <div class="form-group">
+          <label for="">Created Date</label>
+          <p class="input-group">
+            <input type="text" class="form-control" placeholder="From Date"
+              datetime-picker="{{$root.dateFormat}}"
+              ng-model="filterVM.createdDateFrom"
+              is-open="filterVM.popupCreatedDateFrom.opened"
+              datepicker-options="filterVM.dateOptions"
+              enable-time="false"
+              button-bar="filterVM.dateOptions.buttonBar"
+              close-text="Close"
+            >
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default primary-color" ng-click="filterVM.toggleCreatedDateFromPicker()">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+            </span>
+          </p>
+          <p class="input-group">
+            <input type="text" class="form-control" placeholder="To Date"
+              datetime-picker="{{$root.dateFormat}}"
+              ng-model="filterVM.createdDateTo"
+              is-open="filterVM.popupCreatedDateTo.opened"
+              datepicker-options="filterVM.dateOptions"
+              enable-time="false"
+              button-bar="filterVM.dateOptions.buttonBar"
+              close-text="Close"
+            >
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default primary-color" ng-click="filterVM.toggleCreatedDateToPicker()">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+            </span>
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="">Modified Date</label>
+          <p class="input-group">
+            <input type="text" class="form-control" placeholder="From Date"
+              datetime-picker="{{$root.dateFormat}}"
+              ng-model="filterVM.modifiedDateFrom"
+              is-open="filterVM.popupModifiedDateFrom.opened"
+              datepicker-options="filterVM.dateOptions"
+              enable-time="false"
+              button-bar="filterVM.dateOptions.buttonBar"
+              close-text="Close"
+            >
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default primary-color" ng-click="filterVM.toggleModifiedDateFromPicker()">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+            </span>
+          </p>
+          <p class="input-group">
+            <input type="text" class="form-control" placeholder="To Date"
+              datetime-picker="{{$root.dateFormat}}"
+              ng-model="filterVM.modifiedDateTo"
+              is-open="filterVM.popupModifiedDateTo.opened"
+              datepicker-options="filterVM.dateOptions"
+              enable-time="false"
+              button-bar="filterVM.dateOptions.buttonBar"
+              close-text="Close"
+            >
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default primary-color" ng-click="filterVM.toggleModifiedDateToPicker()">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+            </span>
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="">Budget</label>
+          <p class="input-group">
+            <input type="number" name="budgetFrom" ng-model="filterVM.budgetFrom" class="form-control" placeholder="At least">
+            <input type="number" name="budgetTo" ng-model="filterVM.budgetTo" class="form-control" placeholder="At most">
+          </p>
+        </div>
+
+        <div class="form-group">
+          <select name="status" class="form-control input-sm form-combobox"
+            ng-model="filterVM.selectedStatus"
+            ng-options="status.value as status.label for status in filterVM.projectStates"
+          >
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="division" id="filter_division" class="form-control input-sm form-combobox"
+            ng-model="filterVM.selectedDivision"
+            ng-options="division.value as division.label for division in filterVM.divisions"
+          >
+          </select>
+        </div>
+
+        <div class="justify-content-between">
+          <button class="btn btn-primary" type="button" ng-click="filterVM.applyFilter()">FILTER</button>
+          <button class="btn" type="button" ng-click="filterVM.clearFilter()">CLEAR</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

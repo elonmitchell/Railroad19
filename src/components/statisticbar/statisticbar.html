@@ -1,0 +1,51 @@
+<div class="panel statisticbar-container">
+  <div class="panel-heading statistic-header">
+    <h3 class="panel-title">PROJECT DATA</h3>
+    <small class="panel-description">At a glance</small>
+  </div>
+  <div class="panel-body" id="statistic_body">
+    <div class="list-group">
+      <a class="list-group-item list-group-item-success">Total Projects: {{ statisticVM.summation.totalProjects }}</a>
+      <a class="list-group-item">
+        <div>Division:</div>
+        <div>Administration: {{ statisticVM.summation.totalAdminstrations }}</div>
+        <div>Accounting: {{ statisticVM.summation.totalAccountings }}</div>
+        <div>Production: {{ statisticVM.summation.totalProductions }}</div>
+        <div>Marketing: {{ statisticVM.summation.totalMarketings }}</div>
+        <div>Sales: {{ statisticVM.summation.totalSales }}</div>
+      </a>
+      <a class="list-group-item list-group-item-success">Total Owners: {{ statisticVM.summation.totalOwners }}</a>
+      <a class="list-group-item">
+        <div>Highest Budgeted:</div>
+        <div>{{ statisticVM.summation.highestBudgeted }}</div>
+      </a>
+      <a class="list-group-item">
+        <div>Lowest Budgeted:</div>
+        <div>{{ statisticVM.summation.lowestBudgeted }}</div>
+      </a>
+      <a class="list-group-item list-group-item-success">
+        <span>Total Sum of All Budgets:</span>
+        {{ statisticVM.summation.totalBudgets | currency}}
+      </a>
+      <a class="list-group-item">
+        <div>Projects By Status:</div>
+        <div>New: {{ statisticVM.summation.totalNewProjects }}</div>
+        <div>Working: {{ statisticVM.summation.totalWorkingProjects }}</div>
+        <div>Delivered: {{ statisticVM.summation.totalDeliveredProjects }}</div>
+        <div>Archived: {{ statisticVM.summation.totalArchivedProjects }}</div>
+      </a>
+      <a class="list-group-item">
+        <div>Newest Project:</div>
+        <div>{{ statisticVM.summation.newestProject }}</div>
+      </a>
+      <a class="list-group-item">
+        <div>Oldest Project:</div>
+        <div>{{ statisticVM.summation.oldestProject }}</div>
+      </a>
+      <a class="list-group-item">
+        <div>Last Modified Project:</div>
+        <div>{{ statisticVM.summation.lastModifiedProject }}</div>
+      </a>
+    </div>
+  </div>
+</div>

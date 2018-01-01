@@ -1,0 +1,88 @@
+<div class="container-fluid home-container">
+  <div class="row">
+    <nav class="bg-faded" id="filterbar">
+      <filterbar update="homeVM.getRecords"></filterbar>
+    </nav>
+    <div class="content-block">
+      <div>Search Results: {{ homeVM.records.length }}</div>
+      <div class="justify-content-between actions">
+        <div class="export-buttons">
+          <button class="btn" type="button">
+            <img src="assets/img/icon-xls.png">
+            <span style="padding-left: 5px">Export to Excel</span>
+          </button>
+          <button class="btn" type="button">
+            <img src="assets/img/icon-pdf.png">
+            <span style="padding-left: 5px">Export to PDF</span>
+          </button>
+        </div>
+        <a class="" href="#">+ New Record</a>
+      </div>
+      <div id="records">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th><a href="#" class="column-sort">Title</a></th>
+              <th><a href="#" class="column-sort">Division</a></th>
+              <th><a href="#" class="column-sort">Project Owner</a></th>
+              <th><a href="#" class="column-sort">Budget</a></th>
+              <th><a href="#" class="column-sort">Status</a></th>
+              <th><a href="#" class="column-sort">Created Date</a></th>
+              <th><a href="#" class="column-sort">Modified Date</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="record in homeVM.records">
+              <td>
+                <a href="#">{{ record.title }}</a>
+              </td>
+              <td>
+                <span>{{ record.division }}</span>
+              </td>
+              <td ng-dblclick="homeVM.setEditing($index, 2, homeVM.editing)">
+                <span class="editable" ng-if="!homeVM.isEditing($index, 2)">{{ record.project_owner }}</span>
+                <input type="text" autofocus
+                  ng-if="homeVM.isEditing($index, 2)"
+                  ng-model="homeVM.editingValue"
+                  ng-init="homeVM.editingValue=record.project_owner"
+                  ng-blur="homeVM.cancelEditing()"
+                  ng-keypress="homeVM.updateField($event, $index, 'project_owner', homeVM.editingValue)"
+                >
+              </td>
+              <td ng-dblclick="homeVM.setEditing($index, 3, homeVM.editing)">
+                <span class="editable" ng-if="!homeVM.isEditing($index, 3)">{{ record.budget | currency }}</span>
+                <input type="number" autofocus
+                  ng-if="homeVM.isEditing($index, 3)"
+                  ng-model="homeVM.editingValue"
+                  ng-init="homeVM.editingValue=record.budget"
+                  ng-blur="homeVM.cancelEditing()"
+                  ng-keypress="homeVM.updateField($event, $index, 'budget', homeVM.editingValue)"
+                >
+              </td>
+              <td ng-dblclick="homeVM.setEditing($index, 4, homeVM.editing)">
+                <span class="editable" ng-if="!homeVM.isEditing($index, 4)">{{ record.status }}</span>
+                <select name="status" class="form-control input-sm form-combobox"
+                  ng-if="homeVM.isEditing($index, 4)"
+                  ng-init="homeVM.editingValue=record.status"
+                  ng-model="homeVM.editingValue"
+                  ng-blur="homeVM.cancelEditing()"
+                  ng-options="status.value as status.label for status in homeVM.projectStates"
+                  ng-change="homeVM.updateField($event, $index, 'status', homeVM.editingValue)"
+                >
+              </td>
+              <td>
+                <span>{{ record.created }}</span>
+              </td>
+              <td>
+                <span>{{ record.modified }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <nav class="bg-faded" id="statisticbar">
+      <statisticbar records="homeVM.records"></statisticbar>
+    </nav>
+  </div>
+</div>

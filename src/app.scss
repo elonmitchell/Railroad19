@@ -1,0 +1,46 @@
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '../node_modules/roboto-fontface/css/roboto/roboto-fontface.css';
+@import '../node_modules/perfect-scrollbar/css/perfect-scrollbar.css';
+
+* {
+  border-radius: 0px !important;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.container-fluid {
+  padding: 0px;
+}
+
+.box {
+  width: 70%;
+  height: 200px;
+  background: #FFF;
+  margin: 40px auto;
+}
+
+.sheet {
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.justify-content-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-primary {
+  background-color: #355e3b !important;
+  border-color: #355e3b !important;
+}
+
+.form-control {
+  background-color: #f9f9f9 !important;
+}
+
+.primary-color {
+  color: #355e3b;
+}
+
+.ps__thumb-y {
+  border-radius: 6px !important;
+}
